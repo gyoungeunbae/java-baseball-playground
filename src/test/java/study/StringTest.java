@@ -14,8 +14,17 @@ public class StringTest {
 
     @Test
     void split() {
-        String split = "1,2";
-        String actual[] = split.split(",");
+        String string = "1,2";
+        String actual[] = string.split(",");
         assertThat(actual).containsExactly("1", "2");
     }
+
+    @Test
+    void subString() {
+        String string = "(1,2)";
+        String actual = string.substring(1,4);
+        assertThat(actual).isEqualTo("1,2");
+    }
+
+    
 }
