@@ -3,7 +3,10 @@ package study;
 import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringTest {
     @Test
@@ -26,5 +29,14 @@ public class StringTest {
         assertThat(actual).isEqualTo("1,2");
     }
 
-    
+    @Test
+    void charAt() {
+        String string = "abc";
+        char actual1 = string.charAt(1);
+        assertThat(actual1).isEqualTo('b');
+        assertThatThrownBy(() -> {
+            string.charAt(4);
+        }).isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 4");
+    }
 }
